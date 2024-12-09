@@ -8,12 +8,12 @@
   <section
     class="feed"
   >
-    <div>
+    <div class="feed-container">
       <CHPostInput 
         @post="post"
       />
       <CHPost
-        v-for="(post, index) in feed"
+        v-for="(post, index) in feed.slice().reverse()"
         :key="index"
         v-bind="postProp(post)"
       />
@@ -25,24 +25,18 @@
 </template>
 
 <script lang='ts' setup>
-import { useEnvironment } from '@/composables/environment';
+import { useEnvironment } from '@/composables/environment'
 import { Post } from '@/types/post'
 
 const postStore = usePostStore()
 const { fetch } = useEnvironment()
 
-const posted = reactive({
-  image: '',
-  content: ''
-})
-
-const post = (content: string) => {
-  posted.content = content
-  postStore.post(posted)
+const post = async (form: FormData) => {
+  await postStore.post(form)
 }
 
 const feed = computed(() => {
-  return postStore.get.toReversed()
+  return postStore.get
 })
 
 const postProp = (post: Post) => ({
@@ -50,7 +44,8 @@ const postProp = (post: Post) => ({
   idUser: post.idUser,
   content: post.content,
   image: post.image,
-  createdAt: post.createdAt
+  createdAt: post.createdAt,
+  signature: post.signature
 })
 
 onMounted(() => {
@@ -66,5 +61,9 @@ onMounted(() => {
 
 .v-form {
   min-width: 35rem;
+}
+
+.feed-container {
+  width: 35rem;
 }
 </style>

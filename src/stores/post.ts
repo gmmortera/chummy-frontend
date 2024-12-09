@@ -1,5 +1,5 @@
 import { AxiosError } from "axios"
-import type { Post, UserPost } from '../types/post'
+import type { Post } from '../types/post'
 
 const resource = "/posts"
 
@@ -19,10 +19,14 @@ export const usePostStore = defineStore('post', () => {
     }
   }
 
-  const post = async (post: UserPost) => {
+  const post = async (post: FormData) => {
     try {
-      const { status, data } = await axios.post(resource, post)
-      const newPost = data.post
+      const { status, data } = await axios.post(resource, post, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
+      const newPost = await data.post
 
       if (status === 201) _posts.value.push(newPost as Post)
 
@@ -32,11 +36,18 @@ export const usePostStore = defineStore('post', () => {
     }
   }
 
-  const destroy = async (id: string) => {
+  const destroy = async (id: string, image: { imageUrl: string, signature?: string }) => {
     try {
-      const { status } = await axios.delete(resource + `/${id}`)
+      const publicId = image.imageUrl && image.signature 
+        ? new URL(image.imageUrl).pathname.split('/').pop()?.split('.')[0] 
+        : null
+
+      const { status } = await axios.put(resource + `/${id}`, {
+        publicId: publicId,
+        signature: image.signature
+      })
       
-      if (status === 404) _posts.value = _posts.value.filter((p) => p.id !== id)
+      if (status === 200) _posts.value = _posts.value.filter((p) => p.id !== id)
 
     } catch (e) {
       const error = e as Error | AxiosError

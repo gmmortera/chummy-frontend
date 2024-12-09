@@ -7,6 +7,7 @@ interface Post extends UserPost{
   id: string
   idUser: string
   createdAt: number
+  signature: string
 }
 
 export type {

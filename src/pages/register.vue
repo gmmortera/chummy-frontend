@@ -62,7 +62,7 @@
       const status = await post(rest)
       
       if (status === 201) {
-        push('/')
+        push('/home')
       }
     } catch (error) {
       const e = error as Error
