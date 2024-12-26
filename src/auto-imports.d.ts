@@ -57,6 +57,7 @@ declare global {
   const useAppStore: typeof import('./stores/app')['useAppStore']
   const useAttrs: typeof import('vue')['useAttrs']
   const useAuthStore: typeof import('./stores/authentication')['useAuthStore']
+  const useCommentStore: typeof import('./stores/comment')['useCommentStore']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
   const useLink: typeof import('vue-router')['useLink']
@@ -131,6 +132,7 @@ declare module 'vue' {
     readonly useAppStore: UnwrapRef<typeof import('./stores/app')['useAppStore']>
     readonly useAttrs: UnwrapRef<typeof import('vue')['useAttrs']>
     readonly useAuthStore: UnwrapRef<typeof import('./stores/authentication')['useAuthStore']>
+    readonly useCommentStore: UnwrapRef<typeof import('./stores/comment')['useCommentStore']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
     readonly usePostStore: UnwrapRef<typeof import('./stores/post')['usePostStore']>

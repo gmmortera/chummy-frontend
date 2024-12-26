@@ -33,7 +33,7 @@ export const useUserStore = defineStore('user', () => {
     return _users.value
   })
 
-  const getName = (id: string) => {
+  const getName = (id?: string) => {
     const user = _users.value.find((u) => u.id === id)
     const name = user.email.split('@')[0]
     return name

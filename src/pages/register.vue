@@ -8,7 +8,9 @@
       />
     </section>
     <section class="register__right">
-        <v-form>
+        <v-form
+          @keydown.prevent.enter="register"
+        >
           <v-container>
             <v-text-field
               v-model="registerForm.email" 

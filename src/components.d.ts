@@ -7,9 +7,16 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    CHPost: typeof import('./components/feed/CHPost.vue')['default']
-    CHPostInput: typeof import('./components/feed/CHPostInput.vue')['default']
+    CHComment: typeof import('./components/display/CHComment.vue')['default']
+    CHCommentInput: typeof import('./components/inputs/CHCommentInput.vue')['default']
+    CHCommentList: typeof import('./components/display/CHCommentList.vue')['default']
+    CHCommentListItem: typeof import('./components/display/CHCommentListItem.vue')['default']
+    CHCommentModal: typeof import('./components/modals/CHCommentModal.vue')['default']
+    CHCommentSettingModal: typeof import('./components/modals/CHCommentSettingModal.vue')['default']
+    CHPost: typeof import('./components/display/CHPost.vue')['default']
+    CHPostInput: typeof import('./components/inputs/CHPostInput.vue')['default']
     CHPostModal: typeof import('./components/modals/CHPostModal.vue')['default']
+    CHPostSettingModal: typeof import('./components/modals/CHPostSettingModal.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

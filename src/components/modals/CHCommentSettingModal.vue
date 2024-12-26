@@ -1,11 +1,11 @@
 <template>
   <v-menu
-    width="10rem"
+    width="10rem"s
     :transition="false"
   >
     <template v-slot:activator="{ props }">
       <v-btn
-        icon="mdi-dots-horizontal"
+        icon="mdi-dots-vertical"
         :ripple="false"
         variant="text"
         v-bind="props"
@@ -14,6 +14,13 @@
 
     <v-list>
       <v-list-item>
+        <v-btn
+          block
+          :ripple="false"
+          @click="emits('edit')"
+        >
+          Edit
+        </v-btn>
         <v-btn 
           block
           :ripple="false"
@@ -27,11 +34,10 @@
 </template>
 
 <script lang='ts' setup>
-
 const emits = defineEmits<{
   delete: []
+  edit: []
 }>()
-
 </script>
 
 <style lang='scss' scoped>
