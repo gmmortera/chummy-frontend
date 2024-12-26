@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-form
-      @submit.prevent="post"
+      @keydown.prevent.enter="post"
     >
       <v-row no-gutters justify="space-between">
         <v-col cols="12">
@@ -24,7 +24,7 @@
           <v-btn
             class="input"
             color="primary"
-            type="submit"s
+            @click="post"
           >Post</v-btn>
         </div>
       </v-row>

@@ -10,7 +10,7 @@
         <h1>CHUMMY</h1>
       </div>
       <v-form
-        @submit.prevent="login"
+        @keydown.prevent.enter="login"
       >
         <v-container>
           <v-text-field
@@ -28,7 +28,7 @@
             required
           ></v-text-field>
           <v-btn
-            type="submit"
+            @click="login"
           >
             Log in
           </v-btn>

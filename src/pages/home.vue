@@ -13,9 +13,9 @@
         @post="post"
       />
       <CHPost
-        v-for="(post, index) in feed.slice().reverse()"
+        v-for="(post, index) in feed"
         :key="index"
-        v-bind="postProp(post)"
+        v-bind="postBind(post)"
       />
     </div>
   </section>
@@ -36,10 +36,10 @@ const post = async (form: FormData) => {
 }
 
 const feed = computed(() => {
-  return postStore.get
+  return postStore.get.slice().reverse()
 })
 
-const postProp = (post: Post) => ({
+const postBind = (post: Post) => ({
   id: post.id,
   idUser: post.idUser,
   content: post.content,
@@ -48,8 +48,8 @@ const postProp = (post: Post) => ({
   signature: post.signature
 })
 
-onMounted(() => {
-  fetch()
+onMounted(async () => {
+  await fetch()
 })
 </script>
 
