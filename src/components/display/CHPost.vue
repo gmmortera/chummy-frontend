@@ -22,7 +22,10 @@
       height="35rem"
     />
     <v-card-actions>
-      <v-btn icon="mdi-heart-outline"/>
+      <v-btn
+        :icon="isLiked ? 'mdi-heart' : 'mdi-heart-outline'"
+        @click="likePost"
+      />
       <CHCommentModal
         :idUser="idUser"
         :idPost="id"
@@ -39,6 +42,7 @@ const { getName } = useUserStore()
 
 const session = useSession()
 const postStore = usePostStore()
+const likeStore = useLikeStore()
 const post = defineProps<Post>()
 
 const deletePost = async () => {
@@ -46,6 +50,20 @@ const deletePost = async () => {
     imageUrl: post.image,
     signature: post.signature
   })
+}
+
+const likePost = async () => {
+  const like = {
+    idPost: post.id,
+    idUser: String(session),
+    isLiked: post.isLiked === undefined ? true : !post.isLiked
+  }
+
+  if (post.isLiked === undefined) {
+    await likeStore.post(like)
+  } else {
+    await likeStore.patch(like)
+  }
 }
 
 </script>

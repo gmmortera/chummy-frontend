@@ -45,7 +45,8 @@ const postBind = (post: Post) => ({
   content: post.content,
   image: post.image,
   createdAt: post.createdAt,
-  signature: post.signature
+  signature: post.signature,
+  isLiked: post.isLiked
 })
 
 onMounted(async () => {
