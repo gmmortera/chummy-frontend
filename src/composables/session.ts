@@ -5,5 +5,4 @@ export const useSession = () => {
 	if(sessionId) {
 		return sessionId
 	}
-	return undefined
 }

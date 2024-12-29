@@ -3,14 +3,19 @@ interface UserPost {
   content: string
 }
 
-interface Post extends UserPost{
+interface PostData extends UserPost {
   id: string
   idUser: string
   createdAt: number
   signature: string
 }
 
+interface Post extends PostData {
+  isLiked: boolean
+}
+
 export type {
   UserPost,
-  Post
+  Post,
+  PostData
 }

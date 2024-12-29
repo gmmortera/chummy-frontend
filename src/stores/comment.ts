@@ -62,7 +62,7 @@ export const useCommentStore = defineStore('comment', () => {
 
     } catch (e) {
       const error = e as Error | AxiosError
-      console.log(error)
+      console.error(error)
     }
   }
 
