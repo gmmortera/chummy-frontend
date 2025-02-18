@@ -1,8 +1,6 @@
 <template>
   <div class="item" :id="comment.id">
-    <v-avatar
-      image="https://cdn.vuetifyjs.com/images/john.jpg"
-    />
+    <v-avatar color="info" icon="mdi-account-circle" />
     <v-list-item
       :key="comment.id"
     >
@@ -38,27 +36,40 @@
             <div class="info">
               <p>{{ new Date(comment.createdAt).getHours() }} hrs</p>
               <v-btn
-                v-if="!toggleEdit"
-                variant="plain"
-                size="xsmall"
-              >
-                Reply
-              </v-btn>
-              <v-btn
-                v-else
+                v-if="toggleEdit"
                 variant="flat"
                 size="xsmall"
                 @click="toggleEdit = false"
               >
                 Cancel
               </v-btn>
+              <v-btn
+                v-if="!toggleEdit && !toggleReply"
+                variant="plain"
+                size="xsmall"
+                @click="toggleReply = true"
+              >
+                Reply
+              </v-btn>
             </div>
+            <CHReplyInput
+              v-if="toggleReply"
+              class="reply"
+              :id-comment="comment.id"
+              :id-user="comment.idUser"
+              :id-sender="comment.idUser"
+              width="31rem"
+              @close="closeReply"
+            />
+            <CHReplyList 
+              :id-comment="comment.id"
+            />
           </template>
         </v-card>
       </template>
     </v-list-item>
     <CHCommentSettingModal
-      v-if="session === comment.idUser && !toggleEdit"
+      v-if="session === comment.idUser && !toggleEdit && !toggleReply"
       @delete="destroy(comment.id)"
       @edit="editComment"
     />
@@ -68,6 +79,7 @@
 <script lang='ts' setup>
 import { useSession } from '@/composables/session'
 import type { Comment } from '../../types/comment'
+import CHReplyInput from '../reply/CHReplyInput.vue';
 
 interface Props {
   comment: Comment
@@ -80,6 +92,7 @@ const { getName } = useUserStore()
 const commentStore = useCommentStore()
 
 const toggleEdit = ref(false)
+const toggleReply = ref(false)
 const nextComment = ref('')
 
 const patch = async () => {
@@ -97,15 +110,18 @@ const editComment = () => {
   nextComment.value = props.comment.text
 }
 
+const closeReply = (state: boolean) => {
+  toggleReply.value = state
+}
+
 </script>
 
 <style lang='scss' scoped>
 .content {
   border-radius: 5px;
-  background-color: grey;
+  padding: 0 1rem .5rem 0;
+  margin-left: 1rem;
   text-align: start;
-  padding: .2rem 1rem .5rem .8rem;
-  margin: 0 0 .5rem 1rem;
 
   :first-child {
     font-weight: 700;
@@ -122,4 +138,11 @@ const editComment = () => {
   }
 }
 
+.v-avatar {
+  margin-top: .4rem;
+}
+
+.reply {
+  margin: .5rem;
+}
 </style>

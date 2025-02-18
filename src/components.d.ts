@@ -7,16 +7,18 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    CHComment: typeof import('./components/display/CHComment.vue')['default']
-    CHCommentInput: typeof import('./components/inputs/CHCommentInput.vue')['default']
-    CHCommentList: typeof import('./components/display/CHCommentList.vue')['default']
-    CHCommentListItem: typeof import('./components/display/CHCommentListItem.vue')['default']
-    CHCommentModal: typeof import('./components/modals/CHCommentModal.vue')['default']
-    CHCommentSettingModal: typeof import('./components/modals/CHCommentSettingModal.vue')['default']
-    CHPost: typeof import('./components/display/CHPost.vue')['default']
-    CHPostInput: typeof import('./components/inputs/CHPostInput.vue')['default']
-    CHPostModal: typeof import('./components/modals/CHPostModal.vue')['default']
-    CHPostSettingModal: typeof import('./components/modals/CHPostSettingModal.vue')['default']
+    CHCommentInput: typeof import('./components/comment/CHCommentInput.vue')['default']
+    CHCommentList: typeof import('./components/comment/CHCommentList.vue')['default']
+    CHCommentListItem: typeof import('./components/comment/CHCommentListItem.vue')['default']
+    CHCommentModal: typeof import('./components/comment/CHCommentModal.vue')['default']
+    CHCommentSettingModal: typeof import('./components/comment/CHCommentSettingModal.vue')['default']
+    CHPost: typeof import('./components/post/CHPost.vue')['default']
+    CHPostInput: typeof import('./components/post/CHPostInput.vue')['default']
+    CHPostSettingModal: typeof import('./components/post/CHPostSettingModal.vue')['default']
+    CHReplyInput: typeof import('./components/reply/CHReplyInput.vue')['default']
+    CHReplyList: typeof import('./components/reply/CHReplyList.vue')['default']
+    CHReplyListItem: typeof import('./components/reply/CHReplyListItem.vue')['default']
+    CHReplySettingModal: typeof import('./components/reply/CHReplySettingModal.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

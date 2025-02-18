@@ -18,9 +18,13 @@ export const useAuthStore = defineStore('authentication', () => {
     }
   }
 
-  const destroy = async (): Promise<undefined> => {
+  const destroy = async (): Promise<number> => {
     try {
-      await axios.delete(resource)
+      const { status } = await axios.delete(resource)
+
+      if (status === 200) localStorage.removeItem("user")
+
+      return status
     } catch (error) {
       const e = error as Error | AxiosError
       console.error(e)

@@ -3,7 +3,11 @@
 
   </section>
   <nav>
-
+    <v-btn
+      @click="logout"
+    >
+      Log Out
+    </v-btn>
   </nav>
   <section
     class="feed"
@@ -29,10 +33,20 @@ import { useEnvironment } from '@/composables/environment'
 import { Post } from '@/types/post'
 
 const postStore = usePostStore()
+const authStore = useAuthStore()
+const { push } = useRouter()
 const { fetch } = useEnvironment()
 
 const post = async (form: FormData) => {
   await postStore.post(form)
+}
+
+const logout = async () => {
+  const status = await authStore.destroy()
+
+  if (status === 200) {
+    push('/login')
+  }
 }
 
 const feed = computed(() => {
