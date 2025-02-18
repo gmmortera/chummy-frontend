@@ -60,8 +60,10 @@ declare global {
   const useCommentStore: typeof import('./stores/comment')['useCommentStore']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
+  const useLikeStore: typeof import('./stores/like')['useLikeStore']
   const useLink: typeof import('vue-router')['useLink']
   const usePostStore: typeof import('./stores/post')['usePostStore']
+  const useReplyStore: typeof import('./stores/reply')['useReplyStore']
   const useRoute: typeof import('vue-router/auto')['useRoute']
   const useRouter: typeof import('vue-router/auto')['useRouter']
   const useSlots: typeof import('vue')['useSlots']
@@ -135,7 +137,9 @@ declare module 'vue' {
     readonly useCommentStore: UnwrapRef<typeof import('./stores/comment')['useCommentStore']>
     readonly useCssModule: UnwrapRef<typeof import('vue')['useCssModule']>
     readonly useCssVars: UnwrapRef<typeof import('vue')['useCssVars']>
+    readonly useLikeStore: UnwrapRef<typeof import('./stores/like')['useLikeStore']>
     readonly usePostStore: UnwrapRef<typeof import('./stores/post')['usePostStore']>
+    readonly useReplyStore: UnwrapRef<typeof import('./stores/reply')['useReplyStore']>
     readonly useRoute: UnwrapRef<typeof import('vue-router/auto')['useRoute']>
     readonly useRouter: UnwrapRef<typeof import('vue-router/auto')['useRouter']>
     readonly useSlots: UnwrapRef<typeof import('vue')['useSlots']>

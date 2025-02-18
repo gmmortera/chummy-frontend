@@ -73,6 +73,8 @@
     "defineStore": true,
     "useUserStore": true,
     "usePostStore": true,
-    "useCommentStore": true
+    "useCommentStore": true,
+    "useLikeStore": true,
+    "useReplyStore": true
   }
 }

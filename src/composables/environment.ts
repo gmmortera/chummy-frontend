@@ -3,12 +3,22 @@ export const useEnvironment = () => {
   const postStore = usePostStore()
   const commentStore = useCommentStore()
   const likeStore = useLikeStore()
+  const replyStore = useReplyStore()
 
   const fetch = async () => {
-    await likeStore.fetch()
-    await userStore.fetch()
-    await commentStore.fetch()
-    await postStore.fetch()
+    const like = await likeStore.fetch()
+    const user = await userStore.fetch()
+    const comment = await commentStore.fetch()
+    const post = await postStore.fetch()
+    const reply = await replyStore.fetch()
+    
+    return {
+      like,
+      user,
+      comment,
+      post,
+      reply
+    }
   }
 
   return {

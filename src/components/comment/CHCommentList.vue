@@ -40,7 +40,8 @@ defineProps<Props>()
 
 .item {
   display: flex;
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
+
 }
 
 .v-card {

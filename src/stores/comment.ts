@@ -1,10 +1,14 @@
 import { AxiosError } from "axios"
 import type { Comment, UserComment } from '../types/comment'
+import { useSession } from "../composables/session"
 
 const resource = '/comments'
 
 export const useCommentStore = defineStore('comment', () => {
   const _comments = ref<Comment[]>([])
+
+  const userStore = useUserStore()
+  const session = useSession()
 
   const fetch = async () => {
     try {

@@ -15,7 +15,7 @@
           <v-text-field
             v-model="text"
             variant="outlined"
-            :placeholder="'Comment as ' + getName(session)"
+            :placeholder="'Comment as ' + getName(idUser)"
             type="text"
             rounded
           >
@@ -34,9 +34,7 @@
 </template>
 
 <script lang='ts' setup>
-import { useSession } from '@/composables/session'
 
-const session = useSession()
 const { getName } = useUserStore()
 const commentStore = useCommentStore()
 const text = ref('')
@@ -59,7 +57,3 @@ const post = async () => {
 }
 
 </script>
-
-<style lang='scss' scoped>
-
-</style>
