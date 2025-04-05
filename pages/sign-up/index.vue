@@ -1,11 +1,11 @@
 <template>
   <div>
-    INDEX
+    SIGN-UP
   </div>
 </template>
 
 <script lang='ts' setup>
 definePageMeta({
-  middleware: ['auth']
+  middleware: ['guest']
 })
 </script>

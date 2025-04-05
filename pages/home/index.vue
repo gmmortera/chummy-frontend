@@ -1,6 +1,6 @@
 <template>
   <div>
-    INDEX
+    HOME
   </div>
 </template>
 
