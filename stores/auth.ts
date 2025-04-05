@@ -3,22 +3,22 @@ import { z } from 'zod'
 import { useApiService } from '~/composables/api'
 
 export const useAuthStore = defineStore('authentication', () => {
+  const api = useApiService()
 
   const post = async (loginForm: FormLogin) => {
     const cookie = useCookie('userID')
-    const api = useApiService()
 
     try {
-      const id = await api.post<FormLogin>('/api/v1/sessions', loginForm)
+      const response = await api.post<FormLogin>('/api/v1/sessions', loginForm)
 
-      const parsedData = z.object({
+      const parsedId = z.object({
         user: z.string().uuid()
-      }).safeParse(id)
+      }).safeParse(response)
       
-      if (parsedData.success) {
-        cookie.value = parsedData.data.user
+      if (parsedId.success) {
+        cookie.value = parsedId.data.user
         return {
-          data: id,
+          data: response,
           error: null
         }
       } else {

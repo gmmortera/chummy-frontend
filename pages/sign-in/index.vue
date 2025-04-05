@@ -37,7 +37,7 @@
             class="flex items-center justify-center bg-primary-600 text-white rounded-md py-2 text-sm font-semibold dark:text-white active:bg-primary-800 dark:bg-primary-500"
             type="submit"
           >
-            Submit
+            Login
           </UButton>
         </UForm>
         <!-- <div class="relative flex py-5 items-center">
@@ -70,7 +70,7 @@ definePageMeta({
 })
 
 const toast = useToast()
-const auth = useAuthStore()
+const authStore = useAuthStore()
 
 const loginForm = reactive<FormLogin>({
   email: '',
@@ -82,7 +82,7 @@ const onSubmitLoginForm = async (_: FormSubmitEvent<FormLogin>) => {
     email: loginForm.email,
     password: loginForm.password
   }
-  const { error } = await auth.post(formData)
+  const { error } = await authStore.post(formData)
 
   if (!loginForm.email || !loginForm.password) {
     toast.add({ 

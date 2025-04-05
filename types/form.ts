@@ -12,6 +12,7 @@ const formLoginSchema = z.object({
 type FormLogin = z.infer<typeof formLoginSchema>
 
 const formRegisterSchema = z.object({
+  username: z.string().min(8, 'Must have at least 8 characters'),
   email: z.string().email('Invalid email'),
   password: passwordSchema
 })
