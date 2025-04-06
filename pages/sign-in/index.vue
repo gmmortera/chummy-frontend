@@ -1,7 +1,7 @@
 <template>
-  <div class="flex min-h-svh flex-col items-center justify-center p-6 md:ps-10 bg-gray-50 dark:bg-primary-800">
-    <div class="flex lg:max-w-3xl max-w-md rounded-lg overflow-hidden shadow-lg dark:shadow-none">
-      <div class="bg-primary-50/70 dark:bg-primary-900 px-8 pb-10 pt-12 flex-1 w-[500px] min-h-[480px]">
+  <div class="flex min-h-svh flex-col items-center justify-center p-6 md:ps-10 bg-gray-50 dark:bg-slate-900">
+    <div class="flex lg:max-w-3xl max-w-md rounded-lg overflow-hidden shadow-lg dark:shadow-none dark:border-2 dark:border-primary-600">
+      <div class="bg-primary-50/70 dark:bg-slate-800 px-8 pb-10 pt-12 flex-1 w-[500px] min-h-[480px]">
         <UForm 
           class="flex flex-col gap-3"
           :schema="formLoginSchema"
@@ -56,6 +56,9 @@
           class="w-full h-full object-cover aspect-square md:max-w-md lg:max-w-md xl:max-w-md"
         >
       </div>
+    </div>
+    <div class="pt-2">
+      <p class="text-gray-500 text-sm">By clicking continue, you agree to our <ULink to="#" class="dark:text-gray-400 underline">Terms of Service</ULink> and <ULink to="#" class="dark:text-gray-400 underline">Privacy Policy</ULink>.</p>
     </div>
   </div>
 </template>
