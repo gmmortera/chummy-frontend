@@ -1,14 +1,14 @@
 <template>
   <div class="flex min-h-svh flex-col items-center justify-center p-6 md:ps-10 bg-gray-50 dark:bg-primary-800">
-    <div class="flex max-w-3xl rounded-lg overflow-hidden shadow-lg shadow-gray-500 dark:shadow-none">
-      <div class="w-1/2 flex-shrink-0">
+    <div class="flex lg:max-w-3xl max-w-md rounded-lg overflow-hidden shadow-lg shadow-gray-500 dark:shadow-none">
+      <div class="lg:block lg:w-1/2 lg:flex-shrink-0 hidden">
         <img 
           src="https://images.pexels.com/photos/16858626/pexels-photo-16858626/free-photo-of-leaf-of-plant.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt="Fern Leaf"
-          class="w-full h-full object-cover aspect-square"
+          class="w-full h-full object-cover aspect-square md:max-w-md lg:max-w-md xl:max-w-md"
         >
       </div>
-      <div class="bg-primary-50/70 dark:bg-primary-900 px-8 pb-10 pt-12 flex-1 w-[500px]">
+      <div class="bg-primary-50/70 dark:bg-primary-900 px-8 pb-10 pt-12 flex-1 w-[500px] min-h-[480px]">
         <UForm 
           class="flex flex-col gap-3"
           :schema="formRegisterSchema"
