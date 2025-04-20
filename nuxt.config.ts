@@ -3,6 +3,10 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
   colorMode: 'system',
+  components: [{
+    path: '~/components',
+    pathPrefix: false
+  }],
   modules: [
     '@nuxt/eslint',
     '@nuxt/fonts',
@@ -26,7 +30,8 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      baseURL: process.env.CHUMMY_BACKEND_BASEURL
+      baseApiUrl: ''
     }
-  }
+  },
+  ssr: true
 })
