@@ -12,27 +12,25 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Forest green as primary (matching your login page)
         primary: {
           50: '#f0faf4',
           100: '#dbf5e5',
           200: '#bae9cf',
           300: '#86d4aa',
           400: '#56b880',
-          500: '#10B981', // Base - emerald green
+          500: '#10B981',
           600: '#0c9369',
           700: '#0A7554',
-          800: '#0A3D1D', // Dark green (your current login bg)
+          800: '#0A3D1D',
           900: '#052e16',
           950: '#031a0d'
         },
-        // Soft teal as secondary
         secondary: {
           50: '#f0fdfb',
           100: '#cdfaf4',
           200: '#9bf4e9',
           300: '#61e7db',
-          400: '#4ECDC4', // Keep your current teal
+          400: '#4ECDC4',
           500: '#1db4aa',
           600: '#0d948b',
           700: '#0f766e',
@@ -40,13 +38,12 @@ export default {
           900: '#134e4a',
           950: '#042f2c'
         },
-        // Warm amber for info
         info: {
           50: '#fff9e6',
           100: '#ffefb8',
           200: '#ffe38a',
           300: '#ffd75c',
-          400: '#FFD166', // Keep your current amber
+          400: '#FFD166',
           500: '#e6b000',
           600: '#b38600',
           700: '#805d00',
@@ -54,13 +51,12 @@ export default {
           900: '#1a1200',
           950: '#0d0900'
         },
-        // Mint green for success
         success: {
           50: '#ecfdf5',
           100: '#d1fae5',
           200: '#a7f3d0',
           300: '#6ee7b7',
-          400: '#34d399', // Fresh mint green
+          400: '#34d399',
           500: '#10b981',
           600: '#059669',
           700: '#047857',
@@ -68,13 +64,12 @@ export default {
           900: '#064e3b',
           950: '#022c22'
         },
-        // Keep your error color
         error: {
           50: '#fef6f3',
           100: '#fde8e0',
           200: '#fbd0c1',
           300: '#f9b9a2',
-          400: '#E76F51', // Keep your current orange-red
+          400: '#E76F51',
           500: '#d45334',
           600: '#b63e22',
           700: '#912e18',
@@ -82,9 +77,8 @@ export default {
           900: '#451307',
           950: '#220903'
         },
-        // Adjust gray for better light/dark contrast
         gray: {
-          50: '#F9F9F9', // Light bg
+          50: '#F9F9F9',
           100: '#f3f3f3',
           200: '#e5e5e5',
           300: '#d4d4d4',
@@ -94,13 +88,12 @@ export default {
           700: '#404040',
           800: '#262626',
           900: '#171717',
-          950: '#0a0a0a'  // Dark bg
+          950: '#0a0a0a'
         },
-        // Add a special dark mode background color
         dark: {
-          100: '#0E2A1E', // Dark form background
-          200: '#071E12', // Dark input fields
-          300: '#051614', // Darkest accents
+          100: '#0E2A1E',
+          200: '#071E12',
+          300: '#051614',
         }
       }
     }

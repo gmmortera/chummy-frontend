@@ -14,7 +14,9 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/test-utils',
     '@nuxt/ui',
-    '@pinia/nuxt'
+    '@pinia/nuxt',
+    '@vueuse/nuxt'
+
   ],
   css: ['~/assets/css/main.css'],
   eslint: {
@@ -33,5 +35,8 @@ export default defineNuxtConfig({
       baseApiUrl: ''
     }
   },
-  ssr: true
+  ssr: true,
+  vueuse: {
+    ssrHandlers: true
+  }
 })

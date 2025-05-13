@@ -1,11 +1,24 @@
 <template>
-  <div>
-    HOME
+  <div class="px-24">
+    <PostComposer />
+    <PostFeed :posts="posts"/>
   </div>
 </template>
 
-<script lang='ts' setup>
+<script setup lang='ts'>
+
 definePageMeta({
-  middleware: ['auth']
+  middleware: ['auth'],
+  layout: 'custom'
+})
+
+const postStore = usePostStore()
+const posts = computed(() => postStore.get)
+
+onMounted(async () => {
+  await postStore.fetch({
+    limit: 5
+  })
 })
 </script>
+

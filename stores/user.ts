@@ -7,9 +7,7 @@ export const useUserStore = defineStore('users', () => {
   const users = ref<User[]>([])
   const api = useApiService()
 
-  const get = computed(() => {
-    return users.value
-  })
+  const get = computed(() => users.value)
 
   const set = (data: User | User[]) => {
     if (Array.isArray(data)) {
@@ -21,26 +19,28 @@ export const useUserStore = defineStore('users', () => {
 
   const fetch = async () => {
     try {
-      const response = await api.get('/api/v1/users')
-      const parsedUsers = userSchema.safeParse(response)
+      const response = await api.get('/users')
+      const parsedResponse = userSchema.safeParse(response)
 
-      if (parsedUsers.success) {
-        set(parsedUsers.data)
+      if (parsedResponse.success) {
+        set(parsedResponse.data)
       }
     } catch (error) {
       console.error(error)
     }
   }
 
-  const post = async (registerForm: FormRegister) => {
+  const post = async (formRegister: FormRegister) => {
     try {
-      const response = await api.post<FormRegister>('/api/v1/users', registerForm)
-      const parsedUser = userSchema.safeParse(response)
+      const response = await api.post<FormRegister>('/users', {
+        body: formRegister
+      })
+      const parsedResponse = userSchema.safeParse(response)
 
-      if (parsedUser.success) {
-        set(parsedUser.data)
+      if (parsedResponse.success) {
+        set(parsedResponse.data)
         return {
-          data: parsedUser.data,
+          data: parsedResponse.data,
           error: null
         }
       }
