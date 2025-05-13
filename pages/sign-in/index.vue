@@ -1,12 +1,12 @@
 <template>
-  <div class="flex min-h-svh flex-col items-center justify-center p-6 md:ps-10 bg-gray-50 dark:bg-slate-900">
+  <div class="flex min-h-svh flex-col items-center justify-center p-6 md:ps-10">
     <div class="flex lg:max-w-3xl max-w-md rounded-lg overflow-hidden shadow-lg dark:shadow-none dark:border-2 dark:border-primary-600">
       <div class="bg-primary-50/70 dark:bg-slate-800 px-8 pb-10 pt-12 flex-1 w-[500px] min-h-[480px]">
         <UForm 
           class="flex flex-col gap-3"
           :schema="formLoginSchema"
-          :state="loginForm"
-          @submit="onSubmitLoginForm"  
+          :state="formLogin"
+          @submit="onSubmitFormLogin"  
         >
           <div class="text-center pb-6">
             <h1 class="font-bold text-2xl text-gray-800 dark:text-white">Welcome back</h1>
@@ -19,7 +19,7 @@
             <UInput
               class="w-full focus:ring-2 focus:ring-primary-500/50"
               size="lg"
-              v-model="loginForm.email"
+              v-model="formLogin.email"
             />
           </UFormField>
           <UFormField
@@ -29,7 +29,7 @@
             <UInput
               class="w-full focus:ring-2 focus:ring-primary-500/50"
               size="lg"
-              v-model="loginForm.password"
+              v-model="formLogin.password"
               type="password"
             />
           </UFormField>
@@ -63,7 +63,7 @@
   </div>
 </template>
 
-<script lang='ts' setup>
+<script setup lang='ts'>
 import type { FormLogin } from '~/types/form'
 import type { FormSubmitEvent } from '@nuxt/ui'
 import { formLoginSchema } from '~/types/form'
@@ -75,19 +75,19 @@ definePageMeta({
 const toast = useToast()
 const authStore = useAuthStore()
 
-const loginForm = reactive<FormLogin>({
+const formLogin = ref<FormLogin>({
   email: '',
   password: ''
 })
 
-const onSubmitLoginForm = async (_: FormSubmitEvent<FormLogin>) => {
+const onSubmitFormLogin = async (_: FormSubmitEvent<FormLogin>) => {
   const formData = {
-    email: loginForm.email,
-    password: loginForm.password
+    email: formLogin.value.email,
+    password: formLogin.value.password
   }
   const { error } = await authStore.post(formData)
 
-  if (!loginForm.email || !loginForm.password) {
+  if (!formLogin.value.email || !formLogin.value.password) {
     toast.add({ 
       title: 'Invalid Login',
       description: 'Missing credentials.',
